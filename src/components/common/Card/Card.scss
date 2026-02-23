@@ -1,0 +1,11 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.card {
+    @include card-base;
+
+    &--hoverable {
+        cursor: pointer;
+        @include card-hover;
+    }
+}

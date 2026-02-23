@@ -1,0 +1,103 @@
+@use '../../assets/styles/variables' as *;
+@use '../../assets/styles/mixins' as *;
+
+.about {
+    padding: 100px 0;
+    background: $bg-secondary;
+
+    &__container {
+        @include container;
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    &__title {
+        @include heading($font-size-5xl - 6px, $font-weight-bold);
+        color: $color-primary-500;
+        margin-bottom: $spacing-lg;
+    }
+
+    &__divider {
+        width: 80px;
+        height: 4px;
+        @include gradient-bg(90deg, $color-primary-500, $color-secondary-500);
+        margin: 0 auto;
+        border-radius: 2px;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    &__text {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    &__intro {
+        @include body-text($font-size-xl, $line-height-loose);
+        margin: 0 0 $spacing-lg 0;
+        font-weight: $font-weight-medium;
+    }
+
+    &__description {
+        @include body-text($font-size-base, $line-height-loose);
+        color: $text-secondary;
+        margin: 0 0 $spacing-lg;
+    }
+
+    &__features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-xl;
+    }
+
+    &__feature {
+        @include card-base;
+        text-align: center;
+        @include card-hover;
+
+        &-icon {
+            font-size: 48px;
+            margin-bottom: $spacing-lg;
+        }
+
+        &-title {
+            @include heading($font-size-xl, $font-weight-semibold);
+            color: $color-primary-500;
+            margin-bottom: $spacing-md;
+        }
+
+        &-description {
+            @include body-text($font-size-sm, $line-height-relaxed);
+            color: $text-secondary;
+            margin: 0;
+        }
+    }
+
+    @include mobile {
+        padding: 60px 0;
+
+        &__header {
+            margin-bottom: $spacing-3xl;
+        }
+
+        &__title {
+            font-size: $font-size-4xl;
+        }
+
+        &__intro {
+            font-size: $font-size-lg;
+        }
+
+        &__features {
+            grid-template-columns: 1fr;
+            gap: $spacing-lg;
+        }
+    }
+}

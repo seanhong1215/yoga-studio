@@ -1,0 +1,184 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+@include keyframes(scaleIn) {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.contact {
+    padding: 100px 0;
+    background: $bg-primary;
+
+    &__container {
+        @include container;
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    &__title {
+        @include heading($font-size-5xl - 6px, $font-weight-bold);
+        color: $color-primary-500;
+        margin-bottom: $spacing-lg;
+    }
+
+    &__divider {
+        width: 80px;
+        height: 4px;
+        @include gradient-bg(90deg, $color-primary-500, $color-secondary-500);
+        margin: 0 auto $spacing-lg;
+        border-radius: 2px;
+    }
+
+    &__subtitle {
+        @include body-text($font-size-lg);
+        color: $text-secondary;
+        margin: 0;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: $spacing-3xl;
+    }
+
+    &__info {
+        @include flex-column;
+        gap: $spacing-lg;
+
+        &-card {
+            @include transition(all);
+
+            &:hover {
+                transform: translateY(-4px);
+                @include box-shadow(lg);
+            }
+        }
+
+        &-item {
+            display: flex;
+            gap: $spacing-md + 4px;
+            align-items: flex-start;
+        }
+
+        &-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        &-title {
+            @include heading($font-size-base, $font-weight-semibold);
+            color: $color-primary-500;
+            margin-bottom: $spacing-sm;
+        }
+
+        &-text {
+            @include body-text($font-size-sm, $line-height-relaxed);
+            color: $text-secondary;
+            margin: 0;
+        }
+    }
+
+    &__form {
+        @include flex-column;
+        gap: $spacing-lg;
+
+        &-card {
+            padding: $spacing-xl;
+        }
+
+        &-title {
+            @include heading($font-size-2xl, $font-weight-semibold);
+            color: $color-primary-500;
+            margin-bottom: $spacing-lg;
+            text-align: center;
+        }
+
+        &-group {
+            @include flex-column;
+            gap: $spacing-sm;
+        }
+    }
+
+    &__label {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $text-primary;
+    }
+
+    &__input,
+    &__textarea {
+        padding: $spacing-md $spacing-md + 4px;
+        border: 2px solid $color-neutral-200;
+        border-radius: $border-radius-md;
+        font-size: $font-size-sm + 1px;
+        font-family: inherit;
+        @include transition(border-color);
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary-500;
+        }
+    }
+
+    &__textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    &__success {
+        text-align: center;
+        padding: $spacing-3xl $spacing-lg;
+
+        &-icon {
+            font-size: 64px;
+            margin-bottom: $spacing-lg;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        &-text {
+            @include body-text($font-size-lg);
+            color: $color-secondary-500;
+            margin: 0;
+            font-weight: $font-weight-medium;
+        }
+    }
+
+    @include respond-to(lg) {
+        &__content {
+            grid-template-columns: 1fr;
+        }
+
+        &__info {
+            grid-template-columns: repeat(2, 1fr);
+            display: grid;
+        }
+    }
+
+    @include mobile {
+        padding: 60px 0;
+
+        &__header {
+            margin-bottom: $spacing-3xl;
+        }
+
+        &__title {
+            font-size: $font-size-4xl;
+        }
+
+        &__info {
+            grid-template-columns: 1fr;
+        }
+
+        &__form-card {
+            padding: $spacing-lg;
+        }
+    }
+}

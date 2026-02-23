@@ -1,0 +1,138 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.classes {
+    padding: 100px 0;
+    background: $bg-primary;
+
+    &__container {
+        @include container;
+    }
+
+    &__header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    &__title {
+        @include heading($font-size-5xl - 6px, $font-weight-bold);
+        color: $color-primary-500;
+        margin-bottom: $spacing-lg;
+    }
+
+    &__divider {
+        width: 80px;
+        height: 4px;
+        @include gradient-bg(90deg, $color-primary-500, $color-secondary-500);
+        margin: 0 auto $spacing-lg;
+        border-radius: 2px;
+    }
+
+    &__subtitle {
+        @include body-text($font-size-lg);
+        color: $text-secondary;
+        margin: 0;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: $spacing-xl;
+        margin-bottom: 60px;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        &-header {
+            @include flex-between;
+            align-items: flex-start;
+            margin-bottom: $spacing-md + 4px;
+        }
+
+        &-title {
+            @include heading($font-size-2xl, $font-weight-semibold);
+            color: $color-primary-500;
+        }
+
+        &-level {
+            padding: 4px $spacing-md;
+            border-radius: $border-radius-full;
+            font-size: $font-size-xs;
+            font-weight: $font-weight-medium;
+            color: $color-white;
+        }
+
+        &-description {
+            @include body-text($font-size-sm + 1px, $line-height-relaxed);
+            color: $text-secondary;
+            margin: 0 0 $spacing-lg 0;
+            flex-grow: 1;
+        }
+
+        &-info {
+            display: flex;
+            gap: $spacing-lg;
+            padding-top: $spacing-lg;
+            border-top: 1px solid #f0f0f0;
+
+            &-item {
+                @include flex-column;
+                gap: 4px;
+            }
+
+            &-label {
+                font-size: $font-size-xs;
+                color: $color-neutral-500;
+                text-transform: uppercase;
+            }
+
+            &-value {
+                font-size: $font-size-base;
+                font-weight: $font-weight-semibold;
+                color: $text-primary;
+            }
+        }
+
+        &-price {
+            color: $color-secondary-500;
+        }
+    }
+
+    &__footer {
+        text-align: center;
+        padding: $spacing-3xl;
+        @include gradient-bg(135deg, rgba($color-secondary-500, 0.1), rgba($color-primary-500, 0.1));
+        border-radius: $border-radius-lg;
+    }
+
+    &__note {
+        @include body-text($font-size-base);
+        color: $color-primary-500;
+        margin: $spacing-sm 0;
+        font-weight: $font-weight-medium;
+    }
+
+    @include mobile {
+        padding: 60px 0;
+
+        &__header {
+            margin-bottom: $spacing-3xl;
+        }
+
+        &__title {
+            font-size: $font-size-4xl;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: $spacing-lg;
+        }
+
+        &__footer {
+            padding: $spacing-xl $spacing-lg;
+        }
+    }
+}

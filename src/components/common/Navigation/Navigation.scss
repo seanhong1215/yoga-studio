@@ -1,0 +1,87 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.navigation {
+    display: flex;
+
+    &__list {
+        display: flex;
+        gap: $spacing-xl;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__link {
+        background: none;
+        border: none;
+        color: $text-primary;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        cursor: pointer;
+        padding: $spacing-sm 0;
+        position: relative;
+        @include transition(color);
+        font-family: inherit;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: $color-primary-500;
+            @include transition(width);
+        }
+
+        &:hover {
+            color: $color-primary-500;
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &--active {
+            color: $color-primary-500;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    // 手機版樣式
+    @include mobile {
+        &--open {
+            display: flex;
+        }
+
+        &__list {
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+
+        &__item {
+            width: 100%;
+        }
+
+        &__link {
+            width: 100%;
+            text-align: left;
+            padding: $spacing-md + 4px 0;
+            border-bottom: 1px solid $color-neutral-200;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

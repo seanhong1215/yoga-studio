@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Yoga Studio - React + Vite + Docker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+這是一個使用 React + Vite 建置的瑜珈工作室網站專案，支援 Docker 容器化部署。
 
-## Available Scripts
+## 技術棧
 
-In the project directory, you can run:
+- React 19
+- Vite 6
+- React Router 7
+- SASS
+- Docker & Nginx
 
-### `npm start`
+## 開發環境設定
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 安裝依賴
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+### 啟動開發伺服器
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm run dev
+```
 
-### `npm run build`
+開啟瀏覽器訪問 [http://localhost:5173](http://localhost:5173)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 建置生產版本
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+建置結果會輸出到 `dist` 目錄。
 
-### `npm run eject`
+### 預覽生產版本
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm run preview
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Docker 部署
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 建置並啟動 Docker 容器
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run docker:build
+npm run docker:up
+```
 
-## Learn More
+或使用簡化命令：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+docker-compose up -d --build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+應用程式會在 [http://localhost:8080](http://localhost:8080) 上運行。
 
-### Code Splitting
+### 查看日誌
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run docker:logs
+```
 
-### Analyzing the Bundle Size
+### 停止容器
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run docker:down
+```
 
-### Making a Progressive Web App
+### 重新建置（清除快取）
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run docker:rebuild
+```
 
-### Advanced Configuration
+## 專案結構
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+yoga-studio/
+├── src/
+│   ├── assets/          # 靜態資源
+│   │   └── styles/      # 全域樣式
+│   ├── components/      # 共用組件
+│   │   ├── common/      # 通用組件
+│   │   └── layout/      # 佈局組件
+│   ├── pages/           # 頁面組件
+│   ├── utils/           # 工具函數
+│   ├── App.jsx          # 應用程式主組件
+│   └── index.js         # 應用程式入口
+├── public/              # 公開資源
+├── Dockerfile           # Docker 設定檔
+├── docker-compose.yml   # Docker Compose 設定
+├── nginx.conf           # Nginx 設定
+├── vite.config.js       # Vite 設定
+└── package.json         # 專案相依套件
 
-### Deployment
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 瀏覽器支援
 
-### `npm run build` fails to minify
+支援所有現代瀏覽器：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Chrome (最新版)
+- Firefox (最新版)
+- Safari (最新版)
+- Edge (最新版)
+
+## License
+
+MIT

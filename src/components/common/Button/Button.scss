@@ -1,0 +1,48 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.btn {
+    @include button-base;
+
+    // Variants
+    &--primary {
+        @include button-variant($color-primary-500);
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: $color-primary-500;
+        border: 2px solid $color-primary-500;
+
+        &:hover:not(:disabled) {
+            background-color: $color-primary-500;
+            color: $color-white;
+            border: none;
+        }
+    }
+
+    &--accent {
+        @include button-variant($color-secondary-500);
+    }
+
+    // Sizes
+    &--small {
+        padding: $spacing-sm $spacing-lg;
+        font-size: $font-size-sm;
+    }
+
+    &--medium {
+        padding: $spacing-md $spacing-lg + 4px;
+        font-size: $font-size-base;
+    }
+
+    &--large {
+        padding: $spacing-md + 4px $spacing-xl + 4px;
+        font-size: $font-size-lg;
+    }
+
+    // Full width
+    &--full {
+        width: 100%;
+    }
+}

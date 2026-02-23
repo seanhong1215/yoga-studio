@@ -1,0 +1,40 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+
+    &--padded {
+        padding: 0 $container-padding;
+
+        @include mobile {
+            padding: 0 20px;
+        }
+
+        @include respond-to(xs) {
+            padding: 0 16px;
+        }
+    }
+
+    // Size variants
+    &--sm {
+        max-width: 640px;
+    }
+
+    &--md {
+        max-width: 768px;
+    }
+
+    &--default {
+        max-width: $container-max-width;
+    }
+
+    &--lg {
+        max-width: 1400px;
+    }
+
+    &--full {
+        max-width: 100%;
+    }
+}

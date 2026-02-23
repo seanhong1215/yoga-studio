@@ -1,0 +1,71 @@
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+    @include transition(all);
+
+    // Variants
+    &--primary {
+        background-color: $color-primary-500;
+        color: $color-white;
+    }
+
+    &--secondary {
+        background-color: $color-secondary-500;
+        color: $color-white;
+    }
+
+    &--accent {
+        background-color: $color-accent-500;
+        color: $color-white;
+    }
+
+    &--success {
+        background-color: $color-success;
+        color: $color-white;
+    }
+
+    &--warning {
+        background-color: $color-warning;
+        color: $color-white;
+    }
+
+    &--error {
+        background-color: $color-error;
+        color: $color-white;
+    }
+
+    &--neutral {
+        background-color: $color-neutral-200;
+        color: $text-primary;
+    }
+
+    // Sizes
+    &--small {
+        padding: 2px $spacing-sm;
+        font-size: $font-size-xs;
+        border-radius: $border-radius-sm;
+    }
+
+    &--medium {
+        padding: 4px $spacing-md;
+        font-size: $font-size-sm;
+        border-radius: $border-radius-md;
+    }
+
+    &--large {
+        padding: 6px $spacing-md + 4px;
+        font-size: $font-size-base;
+        border-radius: $border-radius-lg;
+    }
+
+    // Rounded
+    &--rounded {
+        border-radius: $border-radius-full;
+    }
+}

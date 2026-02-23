@@ -1,0 +1,51 @@
+/* ============================================
+   主應用程式樣式 (SCSS Version)
+   ============================================ */
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+@use 'global';
+
+/* ============================================
+   應用程式主要樣式
+   ============================================ */
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+        flex: 1;
+        /* Header 是 fixed，這裡預留高度避免內容被遮住 */
+        padding-top: var(--app-header-height);
+    }
+}
+
+/* 固定 Header 下，捲動到 section 時避免被遮擋 */
+section[id] {
+    scroll-margin-top: var(--app-header-height);
+}
+
+/* WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    height: 4px; /* 設定滾輪高度（水平滾動條） */
+    transition: height 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* 滾輪軌道顏色 */
+    height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc; /* 滾輪顏色 */
+    border-radius: 8px;
+    height: 4px;
+    transition: background 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa; /* 滑鼠懸停時變色 */
+}
